@@ -1,0 +1,1 @@
+/usr/bin/c++      CMakeFiles/sparse_matrix.dir/sparse_matrix.cpp.o  -o sparse_matrix -rdynamic 
