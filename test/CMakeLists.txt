@@ -1,3 +1,9 @@
+
+if(HAVE_CGAL)
+    add_executable(CGAL_test CGAL_test.cpp)
+    target_link_libraries(CGAL_test  ${CGAL_LIBRARIES})
+endif()
+
 add_executable(sparse_matrix sparse_matrix.cpp)
 add_executable(normL2 normL2.cpp)
 add_executable(carrots carrots.cpp)
@@ -9,3 +15,4 @@ add_executable(test1 test1.cpp)
 add_executable(test2 test2.cpp)
 add_executable(test3 test3.cpp)
 add_executable(rank rank.cpp)
+add_executable(index index.cpp)
