@@ -10,9 +10,9 @@ set(CGAL_DIR "${CGAL_DIR}/lib/CGAL")
 message(STATUS ${CGAL_DIR})
 find_package(CGAL)
 if(CGAL_FOUND)
-    include_directories(${CGAL_INCLUDE_DIRS})
+    include_directories(${CGAL_INCLUDE_DIRS})#指定目录
     link_directories(${CGAL_LIBRARIES_DIR})
-    message(STATUS ${CGAL_INCLUDE_DIRS})
+    message(STATUS ${CGAL_INCLUDE_DIRS})#显示信息
     message(STATUS ${CGAL_LIBRARIES_DIR})
     set(CGAL_LIBRARIES "CGAL;CGAL_Core;gmp;mpfr") # CGAL
     set(HAVE_CGAL True)
