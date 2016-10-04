@@ -24,19 +24,22 @@ void fun(int a,int b,int c)
     int p;
     p = -b/(2.0*a);
     double q;
-    q = sqrt(D)/(2.0*a);
     double x1;
     double x2;
     if(D < 0)
     {
         cout << "The equation has not real root!" << endl;
-       // q = sqrt(-D)/(2*a); 
-       // x1 = p + q;
-       // x2 = p - q;
-       // cout << x1 << "," << x2 << endl;
+        p = -b/(2.0*a);
+        q = sqrt(-D)/(2*a); 
+        double real,image;
+        real = p;
+        image = q;
+        cout << "x1 =" << real << "+" << image << "i" << endl;
+        cout << "x2 =" << real << "-" << image << "i" << endl;
     }
     else
     {
+        q = sqrt(D)/(2.0*a);
         x1 = p + q;
         x2 = p - q;
         cout << x1 << "," << x2 << endl;
