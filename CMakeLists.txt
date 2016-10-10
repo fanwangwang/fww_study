@@ -21,6 +21,9 @@ else()
     message(STATUS "Configure package without CGAL!")
 endif()
 
+include_directories(${PROJECT_SOURCE_DIR}/include)
+link_directories(${PROJECT_BINARY_DIR})
+
 #Add subdiretory
 add_subdirectory(src)
 add_subdirectory(include)
