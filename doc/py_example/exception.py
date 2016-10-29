@@ -1,6 +1,6 @@
 import sys
 n = int(sys.argv[1])
 try:
-    print(1.0/n)
+    print(1.0/1)
 except ZeroDivisionError:
     print('no reciprocal')
