@@ -1,0 +1,262 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>basis3d | </title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    
+    <link rel="prev" href="./basis2d.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="2"
+        data-chapter-title="basis3d"
+        data-filepath="basis3d.md"
+        data-basepath="."
+        data-revision="Sun Nov 06 2016 16:06:13 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        导言
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="basis2d.html">
+            
+                
+                    <a href="./basis2d.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        basis2d
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="2" data-path="basis3d.html">
+            
+                
+                    <a href="./basis3d.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        basis3d
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" ></a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="3d-case">3D case</h1>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Notation</th>
+<th style="text-align:left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">$$\tau$$</td>
+<td style="text-align:left">a tet</td>
+</tr>
+<tr>
+<td style="text-align:left">$$x_1, x_2, x_3, x_4$$</td>
+<td style="text-align:left">the four vertices</td>
+</tr>
+<tr>
+<td style="text-align:left">$$e_{ij} := (x_i, x_j)$$</td>
+<td style="text-align:left">the edge</td>
+</tr>
+<tr>
+<td style="text-align:left">$$f_{ijk} := (x_i, x_j, x_k)$$</td>
+<td style="text-align:left">the face</td>
+</tr>
+<tr>
+<td style="text-align:left">$$\lambda_1, \lambda_2, \lambda_3, \lambda_4$$</td>
+<td style="text-align:left">The barycenter coordinates</td>
+</tr>
+</tbody>
+</table>
+<p>Let us discuss the $$p$$ order basis.</p>
+<ul>
+<li>basis functions on the four vertices</li>
+<li>basis functions on the six edges</li>
+<li>basis functions on the four faces</li>
+<li>basis functions in the interior of tet</li>
+</ul>
+<p>The basis function on $$x_i$$:</p>
+<p>$$
+\phi<em>i = \frac{p^{p}}{p!}\Pi</em>{l=0}^{p-1}
+(\lambda_i - \frac{l}{p}), </p>
+<p>$$
+where $$i = 1, 2, ,3 ,4$$.</p>
+<p>The the basis function on $$e_{ij}$$: </p>
+<p>$$
+\phi<em>{ij, m} = \frac{p^p}{m!(p-m)!}
+\Pi</em>{l<em>1 = 0}^{m-1}(\lambda_i  - \frac{l_1}{p})
+\Pi</em>{l_2 = 0}^{p-m-1}(\lambda_j - \frac{l_2}{p}),</p>
+<p>$$</p>
+<p>where $$i \not= j$$</p>
+<p>The basis functions on $$f_{ijk}$$:</p>
+<p>$$
+\phi<em>{ijk,m,n} = \frac{p^p}{m!n!(p-m-n)!}\Pi</em>{l<em>1 = 0}^{m - 1}
+(\lambda_i - \frac{l_1}{p}) \Pi</em>{l<em>2 = 0}^{n-1}(\lambda_j -
+\frac{l_2}{p}) \Pi</em>{l_3=0}^{p-m-n-1}(\lambda_k - \frac{l_3}{p}).</p>
+<p>$$</p>
+<p>The basis functions in $$\tau$$:</p>
+<p>$$
+\begin{aligned}
+\phi<em>{1234, m, n, t} = &amp;\frac{p^p}{m!n!t!(p-m-n-t)!}
+\Pi</em>{l<em>1 = 0}^{m - 1} (\lambda_1 - \frac{l_1}{p})
+\Pi</em>{l<em>2 = 0}^{n-1}(\lambda_2 - \frac{l_2}{p})\
+&amp;\Pi</em>{l<em>3=0}^{t - 1 }(\lambda_3 - \frac{l_3}{p})
+\Pi</em>{l_4=0}^{k - m - n - t - 1}(\lambda_4 - \frac{l_4}{p}.
+\end{aligned}</p>
+<p>$$</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./basis2d.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: basis2d"><i class="fa fa-angle-left"></i></a>
+        
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

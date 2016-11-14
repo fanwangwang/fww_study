@@ -1,0 +1,523 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>basis2d | </title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./basis3d.html" />
+    
+    
+    <link rel="prev" href="./index.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="1"
+        data-chapter-title="basis2d"
+        data-filepath="basis2d.md"
+        data-basepath="."
+        data-revision="Sun Nov 06 2016 16:06:13 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        导言
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="1" data-path="basis2d.html">
+            
+                
+                    <a href="./basis2d.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        basis2d
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="basis3d.html">
+            
+                
+                    <a href="./basis3d.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        basis3d
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" ></a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="&#x4E09;&#x89D2;&#x5F62;&#x5355;&#x5143;&#x4E0A;&#x7684;&#x4EFB;&#x610F;&#x6B21;-lagrangian-&#x57FA;&#x51FD;&#x6570;">&#x4E09;&#x89D2;&#x5F62;&#x5355;&#x5143;&#x4E0A;&#x7684;&#x4EFB;&#x610F;&#x6B21; Lagrangian &#x57FA;&#x51FD;&#x6570;</h1>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x8BB0;&#x53F7;</th>
+<th style="text-align:left">&#x610F;&#x4E49;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">$$\tau$$</td>
+<td style="text-align:left">&#x4E09;&#x89D2;&#x5F62;&#x5355;&#x5143;</td>
+</tr>
+<tr>
+<td style="text-align:left">$$x_i, i= 1, 2, 3$$</td>
+<td style="text-align:left">$$\tau$$ &#x7684;&#x4E09;&#x4E2A;&#x9876;&#x70B9;</td>
+</tr>
+<tr>
+<td style="text-align:left">$$e_{ij}$$</td>
+<td style="text-align:left">&#x4EE5; $x_i$ &#x548C; $$x_j$$ &#x4E3A;&#x9876;&#x70B9;&#x7684;&#x8FB9;</td>
+</tr>
+<tr>
+<td style="text-align:left">$$\lambda_i, i =1, 2, 3$$</td>
+<td style="text-align:left">&#x4E09;&#x4E2A;&#x9876;&#x70B9;&#x5BF9;&#x5E94;&#x7684;&#x91CD;&#x5FC3;&#x5750;&#x6807;</td>
+</tr>
+<tr>
+<td style="text-align:left">$$ \mathrm{dof}_p = \frac{(p+1)(p+2)}{2}$$</td>
+<td style="text-align:left">$$p$$ &#x6B21;&#x591A;&#x9879;&#x5F0F;&#x7684;&#x81EA;&#x7531;&#x5EA6;&#x4E2A;&#x6570;</td>
+</tr>
+</tbody>
+</table>
+<p><img src="figures/lagrangian_1-12.png" alt=" The different order dofs on triangle "></p>
+<p>&#x9876;&#x70B9; $$x_i$$ &#x4E0A;&#x7684;&#x57FA;&#x51FD;&#x6570;:</p>
+<p>$$
+\phi<em>i = \frac{p^{p}}{p!}\prod</em>{l=0}^{p-1}
+(\lambda_i - \frac{l}{p}), </p>
+<p>$$
+&#x5176;&#x4E2D; $$i = 1, 2, ,3$$.</p>
+<p>&#x8FB9; $$e_{ij}$$ &#x4E0A;&#x7684;&#x57FA;&#x51FD;&#x6570;: </p>
+<p>$$
+\phi<em>{ij, m} = \frac{p^p}{m!(p-m)!}
+\prod</em>{l<em>1 = 0}^{m-1}(\lambda_i  - \frac{l_1}{p})
+\prod</em>{l_2 = 0}^{p-m-1}(\lambda_j - \frac{l_2}{p}),</p>
+<p>$$
+&#x5176;&#x4E2D; $$1 &lt; i, j &lt; 3, i \not= j$$</p>
+<p>&#x5355;&#x5143; $$\tau$$ &#x5185;&#x90E8;&#x81EA;&#x7531;&#x5EA6;&#x7684;&#x57FA;&#x51FD;&#x6570;:</p>
+<p>$$
+\phi<em>{ijk,m,n} = \frac{p^p}{m!n!(p-m-n)!}\prod</em>{l<em>1 = 0}^{m - 1}
+(\lambda_i - \frac{l_1}{p}) \prod</em>{l<em>2 = 0}^{n-1}(\lambda_j -
+\frac{l_2}{p}) \prod</em>{l_3=0}^{p-m-n-1}(\lambda_k - \frac{l_3}{p}).</p>
+<p>$$</p>
+<h2 id="&#x7ED9;&#x91CD;&#x5FC3;&#x5750;&#x6807;&#x5904;&#x7684;&#x57FA;&#x51FD;&#x6570;&#x503C;">&#x7ED9;&#x91CD;&#x5FC3;&#x5750;&#x6807;&#x5904;&#x7684;&#x57FA;&#x51FD;&#x6570;&#x503C;</h2>
+<p>&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;&#x91CD;&#x5FC3;&#x5750;&#x6807;&#x70B9; </p>
+<p>$$
+b = 
+\begin{pmatrix}
+\lambda_1 &amp; \lambda_2 &amp; \lambda_3
+\end{pmatrix}</p>
+<p>$$</p>
+<p>&#x5982;&#x4F55;&#x5229;&#x7528;&#x77E9;&#x9635;&#x7684;&#x65B9;&#x5F0F;&#x8BA1;&#x7B97;&#x51FA;&#x6240;&#x6709;&#x81EA;&#x7531;&#x5EA6;&#x5BF9;&#x5E94;&#x57FA;&#x51FD;&#x6570;&#x7684;&#x51FD;&#x6570;&#x503C;&#x53CA;&#x68AF;&#x5EA6;&#x503C;?</p>
+<p>&#x9996;&#x5148;, &#x8BA1;&#x7B97;&#x51FA;&#x4E00;&#x4E9B;&#x7CFB;&#x6570;&#x5E38;&#x91CF;:</p>
+<p>$$
+c = 
+\begin{pmatrix}
+\frac{1}{1!} &amp;  \frac{1}{2!} &amp; \cdots &amp; \frac{1}{p!}
+\end{pmatrix},\quad </p>
+<p>$$</p>
+<p>$$
+P = 
+\begin{pmatrix}
+\frac{1}{1!} &amp; 0 &amp; \cdots &amp; 0\
+0 &amp; \frac{1}{2!} &amp; \cdots &amp; 0\
+\vdots &amp; \vdots &amp; \ddots &amp; 0 \
+0 &amp; 0 &amp; \cdots &amp; \frac{1}{p!}
+\end{pmatrix}</p>
+<p>$$</p>
+<p>$$
+A := 
+\begin{pmatrix}
+\lambda_1 &amp; \lambda_2 &amp; \lambda_3\
+\lambda_1 - \frac{1}{p} &amp; \lambda_2 - \frac{1}{p} &amp; \lambda_2 - \frac{1}{p}\
+\vdots &amp; \vdots &amp; \vdots \
+\lambda_1 - \frac{p - 1}{p} &amp; \lambda_2 - \frac{p - 1}{p} &amp; \lambda_2 - \frac{p - 1}{p}
+\end{pmatrix}</p>
+<p>$$</p>
+<p>$$
+B = P 
+\begin{pmatrix}
+\lambda<em>1 &amp; \lambda_2 &amp; \lambda_3\
+\prod</em>{l=0}^{1}(\lambda<em>1 - \frac{l}{p}) &amp; \prod</em>{l=0}^{1}(\lambda<em>2 - \frac{l}{p})
+&amp; \prod</em>{l=0}^{1}(\lambda<em>3 - \frac{l}{p}) \
+\vdots &amp; \vdots &amp; \vdots \
+\prod</em>{l=0}^{p-1}(\lambda<em>1 - \frac{l}{p}) &amp; \prod</em>{l=0}^{p-1}(\lambda<em>2 - \frac{l}{p})
+&amp; \prod</em>{l=0}^{p-1}(\lambda_3 - \frac{l}{p}) 
+\end{pmatrix}</p>
+<p>$$</p>
+<p>&#x9876;&#x70B9;&#x5904;&#x7684;&#x57FA;&#x51FD;&#x6570;&#x503C;&#x4E3A; $$B$$ &#x7684;&#x7B2C; $$p$$ &#x884C;: </p>
+<p>$$
+\Phi_v =  p^pB(p, :)</p>
+<p>$$</p>
+<p>&#x6784;&#x9020;&#x77E9;&#x9635; $$ C = B(1:p-1, [2, 3, 1]) $$, $$ D = B(p-1:-1:1, [3, 1, 2])$$</p>
+<p>$$
+\Phi_e = p^p C\circ D</p>
+<p>$$</p>
+<p>&#x53D6; $$B$$ &#x7684;&#x524D;&#x9762; $$p-2$$ &#x884C;, &#x53D6;&#x4E09;&#x5217;&#x5206;&#x522B;&#x6784;&#x9020; $$M_1, M_2$$ &#x548C; $$M_3$$:</p>
+<p>$$
+M<em>1 = \begin{pmatrix}
+\lambda_1 &amp; 0 &amp; \cdots &amp; 0 \
+0 &amp; \frac{1}{2!}\prod</em>{l=0}^1(\lambda<em>1 - \frac{l}{p}) &amp; \cdots &amp; 0 \
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \
+0 &amp; 0 &amp; \cdots &amp; \frac{1}{(p-1)!}\prod</em>{l=0}^{p-2}(\lambda_1 - \frac{l}{p})
+\end{pmatrix}</p>
+<p>$$</p>
+<p>$$
+M<em>2 = 
+\begin{pmatrix}
+\lambda_2  &amp; \frac{1}{(p-1)!}\prod</em>{l=0}^{p-2}(\lambda<em>2 - \frac{l}{p}) &amp; \cdots &amp;
+\frac{1}{2!}\prod</em>{l=0}^1(\lambda<em>2 - \frac{l}{p}) \
+\frac{1}{2!}\prod</em>{l=0}^1(\lambda<em>2 - \frac{l}{p})&amp; \lambda_2 &amp; \cdots &amp;
+\frac{1}{2!}\prod</em>{l=0}^2(\lambda<em>2 - \frac{l}{p}) \
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots\
+\frac{1}{(p-1)!}\prod</em>{l=0}^{p-2}(\lambda<em>2 - \frac{l}{p}) &amp; 
+\frac{1}{(p-2)!}\prod</em>{l=0}^{p-3}(\lambda_2 -
+\frac{l}{p}) &amp; \cdots &amp; \lambda_2 
+\end{pmatrix}</p>
+<p>$$</p>
+<p>$$
+M<em>3 = \begin{pmatrix}
+\frac{1}{(p-1)!}\prod</em>{l=0}^{p-2}(\lambda<em>3 - \frac{l}{p}) &amp; \frac{1}{(p-1)!}\prod</em>{l=0}^{p-2}(\lambda<em>3 - \frac{l}{p})
+&amp; \cdots &amp; \frac{1}{(p-1)!}\prod</em>{l=0}^{p-2}(\lambda<em>3 - \frac{l}{p})\ 
+\frac{1}{(p-2)!}\prod</em>{l=0}^{p-3}(\lambda<em>3 - \frac{l}{p}) &amp; \frac{1}{(p-2)!}\prod</em>{l=0}^{p-3}(\lambda<em>3 - \frac{l}{p})
+&amp; \cdots &amp; \frac{1}{(p-2)!}\prod</em>{l=0}^{p-3}(\lambda_3 - \frac{l}{p})\ 
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \
+\lambda_3 &amp; \lambda_3 &amp; \cdots &amp; \lambda_3
+\end{pmatrix}</p>
+<p>$$</p>
+<p>&#x5199;&#x6210;&#x77E9;&#x9635;&#x5F62;&#x5F0F;:</p>
+<p>$$
+E = p^p(M_2 \circ M_3)M_1</p>
+<p>$$</p>
+<p>&#x5176;&#x4E2D; $$\circ$$ &#x8868;&#x793A;&#x77E9;&#x9635;&#x7684; 
+<a href="https://www.wikiwand.com/en/Hadamard_product_(matrices" target="_blank">Hadamard &#x4E58;&#x79EF;</a>),
+&#x5373;&#x540C;&#x7EF4;&#x6570;&#x7684;&#x77E9;&#x9635;&#x5BF9;&#x5E94;&#x5143;&#x7D20;&#x76F8;&#x4E58;. &#x7136;&#x540E;&#x53D6;&#x77E9;&#x9635; $$E$$ &#x4E0B;&#x4E09;&#x89D2;&#x77E9;&#x9635;,
+&#x5373;&#x53EF;&#x5F97;&#x6240;&#x6709;&#x5355;&#x5143;&#x5185;&#x90E8;&#x81EA;&#x7531;&#x5EA6;&#x5904;&#x7684;&#x57FA;&#x51FD;&#x6570;&#x503C;.</p>
+<h2 id="&#x51FD;&#x6570;&#x503C;&#x7684;&#x9012;&#x5F52;&#x7B97;&#x6CD5;">&#x51FD;&#x6570;&#x503C;&#x7684;&#x9012;&#x5F52;&#x7B97;&#x6CD5;</h2>
+<p>&#x7531;&#x56FE;&#x53EF;&#x77E5;, &#x81EA;&#x7531;&#x5EA6;&#x7684;&#x5206;&#x5E03;&#x53EF;&#x4EE5;&#x81EA;&#x6210;&#x4E00;&#x4E2A;&#x4E2A;&#x76F8;&#x4E92;&#x5D4C;&#x5957;&#x7684;&#x4E09;&#x89D2;&#x5F62;&#x7684;&#x5F62;&#x5F0F;,&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x6784;&#x9020;&#x5982;&#x4E0B;&#x7684;&#x7B97;&#x6CD5;,</p>
+<p>$$
+A := 
+\begin{pmatrix}
+\lambda_1 &amp; \lambda_2 &amp; \lambda_3\
+\lambda_1 - \frac{1}{p} &amp; \lambda_2 - \frac{1}{p} &amp; \lambda_2 - \frac{1}{p}\
+\vdots &amp; \vdots &amp; \vdots \
+\lambda_1 - \frac{p - 1}{p} &amp; \lambda_2 - \frac{p - 1}{p} &amp; \lambda_2 - \frac{p - 1}{p}
+\end{pmatrix}</p>
+<p>$$</p>
+<p>$$
+P = 
+\begin{pmatrix}
+\frac{1}{1!} &amp; 0 &amp; \cdots &amp; 0\
+0 &amp; \frac{1}{2!} &amp; \cdots &amp; 0\
+\vdots &amp; \vdots &amp; \ddots &amp; 0 \
+0 &amp; 0 &amp; \cdots &amp; \frac{1}{p!}
+\end{pmatrix}</p>
+<p>$$</p>
+<p><strong>Setp 1</strong> </p>
+<p>$$
+a_1 = 1</p>
+<p>$$</p>
+<p>$$ 
+A_1:= A</p>
+<p>$$</p>
+<p>$$ A_1 $$ &#x6309;&#x5217;&#x7D2F;&#x4E58;, &#x5E76;&#x5DE6;&#x4E58; $$P$$, &#x5F97;</p>
+<p>$$
+B<em>1 = P 
+\begin{pmatrix}
+\lambda_1 &amp; \lambda_2 &amp; \lambda_3\
+\prod</em>{l=0}^{1}(\lambda<em>1 - \frac{l}{p}) &amp; \prod</em>{l=0}^{1}(\lambda<em>2 - \frac{l}{p})
+&amp; \prod</em>{l=0}^{1}(\lambda<em>3 - \frac{l}{p}) \
+\vdots &amp; \vdots &amp; \vdots \
+\prod</em>{l=0}^{p-1}(\lambda<em>1 - \frac{l}{p}) &amp; \prod</em>{l=0}^{p-1}(\lambda<em>2 - \frac{l}{p})
+&amp; \prod</em>{l=0}^{p-1}(\lambda_3 - \frac{l}{p}) 
+\end{pmatrix}</p>
+<p>$$</p>
+<p>&#x9876;&#x70B9;&#x5904;&#x7684;&#x57FA;&#x51FD;&#x6570;&#x503C;&#x4E3A; $$B$$ &#x7684;&#x7B2C; $$p$$ &#x884C;: </p>
+<p>$$
+\Phi_v =  p^pB(p, :)</p>
+<p>$$</p>
+<p>&#x6784;&#x9020;&#x77E9;&#x9635; $$ C = B(1:p-1, [2, 3, 1]) $$, $$ D = B(p-1:-1:1, [3, 1, 2])$$</p>
+<p>$$
+\Phi_e = p^p C\circ D</p>
+<p>$$</p>
+<p><strong>Step i</strong></p>
+<p>$$ 
+a_i = (\lambda_1-\frac{i-1}{p})(\lambda_2 - \frac{i-1}{p})(\lambda_3-\frac{i-1}{p})</p>
+<p>$$</p>
+<p>$$
+b<em>i = b</em>{i-1}a_i</p>
+<p>$$</p>
+<p>$$
+\nabla b<em>i = a_i\nabla b</em>{i-1} + b_{i-1} \nabla b_i</p>
+<p>$$</p>
+<p>&#x4ECE;&#x7B2C; $$i$$ &#x884C;&#x5F00;&#x59CB;, &#x53D6; $$ p - 3(i-1)$$ &#x884C;, &#x8BB0; $$j = i + p - 3(i - 1) -1$$, 
+&#x8BB0; $$ A_i = A(i:j, :)$$, $$ P_i = P(i:j,:)$$  </p>
+<p>$$A_i$$ &#x6309;&#x5217;&#x7D2F;&#x4E58;, &#x5DE6;&#x4E58; $$P_i$$ &#x5F97;&#x5230;&#x77E9;&#x9635; $$B_i$$, &#x5219;, $$a_i$$ &#x4E58;&#x4EE5; $$B_i$$ &#x7684;&#x6700;&#x540E;&#x4E00;&#x884C;, &#x5373;&#x53EF;&#x5F97;&#x5230; 3 &#x4E2A;&#x65B0;&#x7684;&#x57FA;&#x51FD;&#x6570;, &#x8FDB;&#x800C;&#x6784;&#x9020;&#x77E9;&#x9635; $$C_i = B_i(1:end-1, [2, 3, 1])$$, $$D_i = B_i(end-1:-1:1, [3, 1, 2])$$, &#x5219;&#x53EF;&#x5F97;&#x66F4;&#x591A;&#x7684;&#x57FA;&#x51FD;&#x6570;</p>
+<p>$$
+p^pb_iC_i\circ D_i</p>
+<p>$$</p>
+<h2 id="&#x7ED9;&#x5B9A;&#x91CD;&#x5FC3;&#x5750;&#x6807;&#x5904;&#x7684;&#x68AF;&#x5EA6;&#x503C;&#x8BA1;&#x7B97;">&#x7ED9;&#x5B9A;&#x91CD;&#x5FC3;&#x5750;&#x6807;&#x5904;&#x7684;&#x68AF;&#x5EA6;&#x503C;&#x8BA1;&#x7B97;</h2>
+<p>$$
+\begin{pmatrix}
+\nabla \lambda_1  &amp; \nabla \lambda_2 &amp; \nabla \lambda_3
+\end{pmatrix}</p>
+<p>$$</p>
+<p>&#x8282;&#x70B9;&#x5904;&#x57FA;&#x51FD;&#x6570;&#x7684;&#x68AF;&#x5EA6;&#x8BA1;&#x7B97;&#x516C;&#x5F0F;&#x5982;&#x4E0B;:  </p>
+<p>$$
+\phi<em>i^V = \frac{p^p}{p!}\sum</em>{k = 0}^{p-1}
+\frac{\prod_{l=0}^{p-1}(\lambda_i - \frac{l}{p})}{\lambda_i - \frac{l}{p}}
+\nabla \lambda_i</p>
+<p>$$
+&#x4F46;&#x4E0A;&#x9762;&#x7684;&#x8BA1;&#x7B97;&#x516C;&#x5F0F;&#x4E0D;&#x9002;&#x7528;&#x4E8E;&#x6D6E;&#x70B9;&#x8FD0;&#x7B97;.&#x53EF;&#x5F15;&#x5165;&#x5982;&#x4E0B;&#x4E09;&#x4E2A;&#x77E9;&#x9635; $$F_i, i = 1, 2, 3$$: </p>
+<p>$$
+F_i = 
+\begin{pmatrix}
+1 &amp; \lambda_i &amp; \cdots &amp; \lambda_i \
+\lambda_i - \frac{1}{p} &amp; 1 &amp; \cdots &amp; \lambda_i - \frac{1}{p} \
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \
+\lambda_i - \frac{p-1}{p} &amp; \lambda_i - \frac{p-1}{p} &amp; \cdots &amp; 1
+\end{pmatrix}</p>
+<p>$$</p>
+<p>&#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#x8FD0;&#x7B97;</p>
+<p>$$
+f<em>{i,j} = \sum</em>{m=1}^j\prod_{k=1}^j F_i(k, m),\quad i = 1, 2, 3, 1 \leq j \leq p-1.</p>
+<p>$$</p>
+<p>$$
+\begin{aligned}
+\nabla B = &amp;<br>P
+\begin{pmatrix}
+\nabla \lambda<em>1 &amp; \nabla \lambda_2 &amp; \nabla \lambda_3\
+\nabla \prod</em>{l=0}^{1}(\lambda<em>1 - \frac{l}{p}) &amp; 
+\nabla \prod</em>{l=0}^{1}(\lambda<em>2 - \frac{l}{p}) &amp;
+\nabla \prod</em>{l=0}^{1}(\lambda<em>3 - \frac{l}{p}) \
+\vdots &amp; \vdots &amp; \vdots \
+\nabla \prod</em>{l=0}^{p-1}(\lambda<em>1 - \frac{l}{p}) &amp;
+\nabla \prod</em>{l=0}^{p-1}(\lambda<em>2 - \frac{l}{p}) &amp;
+\nabla \prod</em>{l=0}^{p-1}(\lambda<em>3 - \frac{l}{p}) 
+\end{pmatrix}\
+= &amp; P
+\begin{pmatrix}
+\nabla \lambda_1 &amp; \nabla \lambda_2 &amp; \nabla \lambda_3\
+f</em>{1,1} \nabla \lambda<em>1 &amp; 
+f</em>{2,1} \nabla \lambda<em>2 &amp;
+f</em>{3,1} \nabla \lambda<em>3 \
+\vdots &amp; \vdots &amp; \vdots \
+f</em>{1, p-1} \nabla \lambda<em>1 &amp;
+f</em>{2, p-1} \nabla \lambda<em>2 &amp;
+f</em>{3, p-1} \nabla \lambda<em>3 
+\end{pmatrix}\
+= &amp; P
+\begin{pmatrix}
+1 &amp; 1 &amp; 1\
+f</em>{1,1} &amp; 
+f<em>{2,1} &amp;
+f</em>{3,1} \
+\vdots &amp; \vdots &amp; \vdots \
+f<em>{1, p-1} &amp;
+f</em>{2, p-1} &amp;
+f_{3, p-1}<br>\end{pmatrix}
+\begin{pmatrix}
+\nabla \lambda_1 &amp; 0 &amp; 0\
+0 &amp; \nabla \lambda_2 &amp; 0 \
+0 &amp; 0 &amp; \nabla \lambda_3
+\end{pmatrix}
+\end{aligned}</p>
+<p>$$</p>
+<h1 id="&#x5177;&#x4F53;&#x4F8B;&#x5B50;">&#x5177;&#x4F53;&#x4F8B;&#x5B50;</h1>
+<h2 id="p--1">$$ p = 1$$</h2>
+<h2 id="p--2">$$ p = 2$$</h2>
+<h2 id="p--3">$$ p = 3$$</h2>
+<p>$$
+\begin{aligned}
+\phi<em>1 = &amp; \frac{9}{2}\lambda_1(\lambda_1 - \frac{1}{3})(\lambda_1 - \frac{2}{3})\
+\phi_2 = &amp; \frac{9}{2}\lambda_2(\lambda_2 - \frac{1}{3})(\lambda_2 - \frac{2}{3})\
+\phi_3 = &amp; \frac{9}{2}\lambda_3(\lambda_3 - \frac{1}{3})(\lambda_3 - \frac{2}{3})\
+\phi</em>{23, 1} =&amp; \frac{27}{2} \lambda<em>2(\lambda_2 - \frac{1}{3})\lambda_3 \
+\phi</em>{23, 2} =&amp; \frac{27}{2} \lambda<em>2\lambda_3(\lambda_3 - \frac{1}{3}) \
+\phi</em>{31, 1} =&amp; \frac{27}{2} \lambda<em>3(\lambda_3 - \frac{1}{3})\lambda_1 \
+\phi</em>{31, 2} =&amp; \frac{27}{2} \lambda<em>3\lambda_1(\lambda_1 - \frac{1}{3}) \
+\phi</em>{12, 1} =&amp; \frac{27}{2} \lambda<em>1(\lambda_1 - \frac{1}{3})\lambda_2 \
+\phi</em>{12, 2} =&amp; \frac{27}{2} \lambda<em>1\lambda_2(\lambda_2 - \frac{1}{3}) \
+\phi</em>{123, 1} = &amp; 27\lambda_1\lambda_2\lambda_3
+\end{aligned}</p>
+<p>$$</p>
+<h2 id="p--4-">$$ p = 4 $$</h2>
+<p>$$
+\begin{aligned}
+\phi_1 = &amp; \frac{4^3}{3!}\lambda_1(\lambda_1 - \frac{1}{4})(\lambda_1-
+\frac{2}{4})(\lambda_1 - \frac{3}{4})\
+\phi_2 = &amp; \frac{4^3}{3!}\lambda_2(\lambda_2 - \frac{1}{4})(\lambda_2-
+\frac{2}{4})(\lambda_2 - \frac{3}{4})\
+\phi_3 = &amp; \frac{4^3}{3!}\lambda_3(\lambda_3 - \frac{1}{4})(\lambda_3-
+\frac{2}{4})(\lambda_3 - \frac{3}{4})\</p>
+<p>\phi<em>{23,1} = &amp; \frac{4^4}{3!1!}\lambda_2(\lambda_2 - \frac{1}{4})(\lambda_2 - \frac{2}{4})
+\lambda_3\
+\phi</em>{23,2} = &amp; \frac{4^4}{2!2!}\lambda<em>2(\lambda_2 - \frac{1}{4})\lambda_3
+(\lambda_3 - \frac{1}{4}) \
+\phi</em>{23,3} = &amp; \frac{4^4}{1!3!}\lambda_2\lambda_3(\lambda_3 - \frac{1}{4})(\lambda_3 -
+\frac{2}{4})\</p>
+<p>\phi<em>{31,1} = &amp; \frac{4^4}{3!1!}\lambda_3(\lambda_3 - \frac{1}{4})(\lambda_3 - \frac{2}{4})
+\lambda_1\
+\phi</em>{31,2} = &amp; \frac{4^4}{2!2!}\lambda<em>3(\lambda_3 - \frac{1}{4})\lambda_1
+(\lambda_1 - \frac{1}{4}) \
+\phi</em>{31,3} = &amp; \frac{4^4}{1!3!}\lambda_3\lambda_1(\lambda_1 - \frac{1}{4})(\lambda_1 -
+\frac{2}{4})\</p>
+<p>\phi<em>{12,1} = &amp; \frac{4^4}{3!1!}\lambda_1(\lambda_1 - \frac{1}{4})(\lambda_1 - \frac{2}{4})
+\lambda_2\
+\phi</em>{12,2} = &amp; \frac{4^4}{2!2!}\lambda<em>1(\lambda_1 - \frac{1}{4})\lambda_2
+(\lambda_2 - \frac{1}{4}) \
+\phi</em>{12,3} = &amp; \frac{4^4}{1!3!}\lambda_1\lambda_2(\lambda_2 - \frac{1}{4})(\lambda_2 -
+\frac{2}{4})\</p>
+<p>\phi<em>{123, 1} = &amp;\frac{4^4}{2!1!1!} \lambda_1(\lambda_1 - \frac{1}{4})\lambda_2\lambda_3\
+\phi</em>{123, 2} = &amp; \frac{4^4}{1!2!1!}\lambda<em>1\lambda_2(\lambda_2 - \frac{1}{4})\lambda_3\
+\phi</em>{123, 3} = &amp; \frac{4^4}{1!1!2!}\lambda_1\lambda_2\lambda_3(\lambda_3 - \frac{1}{4})
+\end{aligned}</p>
+<p>$$</p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./index.html" class="navigation navigation-prev " aria-label="Previous page: 导言"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./basis3d.html" class="navigation navigation-next " aria-label="Next page: basis3d"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"livereload":{}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
