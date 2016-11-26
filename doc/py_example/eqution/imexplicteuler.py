@@ -1,5 +1,5 @@
 import numpy as np                                                               
-n = 10
+n = 320
 t = np.linspace(0,2,n+1)                                                          
 h = 2/n                                                                          
 uh = np.zeros((n+1,1))                                                             
