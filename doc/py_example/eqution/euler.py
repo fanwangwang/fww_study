@@ -9,9 +9,9 @@ ue = np.zeros((n+1,1))
 error = np.zeros((n+1,1))
 uh[0] = 1
 print('显示欧拉')
+ue[0] = (1+t[0]*t[0])*(1+t[0]*t[0]) 
 for i in range(n):
     uh[i+1] = uh[i] + h*4*t[i]*np.sqrt(uh[i])
-    ue[0] = (1+t[0]*t[0])*(1+t[0]*t[0])
     ue[i+1] = (1+t[i+1]*t[i+1])*(1+t[i+1]*t[i+1])
     error[i] = np.abs(uh[i]-ue[i])
 
