@@ -6,7 +6,7 @@ def f(ti, ui):
 def u(t):
     return (1+t*t)**2
 
-n = 40                                    
+n = 80                                    
 t = np.linspace(0,2,n+1)                                                        
 h = 2/n                                                                         
 uh = np.zeros((n+1,))                                                          
