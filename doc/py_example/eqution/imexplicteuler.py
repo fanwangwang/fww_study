@@ -16,10 +16,11 @@ for i in range(n):
     while j<11:
         j = j+1
         uh[i+1] = uh[i] + h*4*t[i+1]*np.sqrt(uh[i+1]) 
+        f1 = 4*t[i+1]*np.sqrt(uh[i+1])
+        uh[i+1] = uh[i] + h*f1
         if np.abs(tmp - uh[i+1]) < 1e-12:
             break
         tmp = uh[i+1]
-    print(j)
     ue[i+1] = (1+t[i+1]*t[i+1])*(1+t[i+1]*t[i+1])                                          
     error[i] = np.abs(uh[i]-ue[i])      
 error = np.max(error)
