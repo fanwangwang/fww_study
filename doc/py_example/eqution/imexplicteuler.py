@@ -18,6 +18,8 @@ for i in range(n):
         uh[i+1] = uh[i] + h*4*t[i+1]*np.sqrt(uh[i+1]) 
         f1 = 4*t[i+1]*np.sqrt(uh[i+1])
         uh[i+1] = uh[i] + h*f1
+        f2 = 4*t[i+1]*np.sqrt(uh[i+1])
+        uh[i+1] = uh[i] + h*f2
         if np.abs(tmp - uh[i+1]) < 1e-12:
             break
         tmp = uh[i+1]

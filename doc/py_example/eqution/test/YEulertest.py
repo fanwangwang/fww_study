@@ -15,7 +15,7 @@ T = [0,2]
 
 name = 'YEuler'
 method = ODEMethod(name)
-uhh,tt,h,error = ode_method_test(f, u0,T, n0,u, name, maxit = 5)
+uhh,tt,h,error = ode_method_test(f, u0,T, n0,u, name, maxit = 6)
 
 ratio = error[:-1]/error[1:]
 order = np.log2(ratio)

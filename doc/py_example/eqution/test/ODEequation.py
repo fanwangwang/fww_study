@@ -78,13 +78,11 @@ def YEuler(f, u0, T, n):
     dt = (T[1] - T[0])/n             
     for i in range(n):                                                           
         uh[i+1] = uh[i] + dt*f(uh[i],t[i])
-        tmp = uh[i+1]
         j = 0                                                                       
-        while j<11:                                                                 
+        while j<3:                                                                 
             j = j+1                                                                 
+            tmp = uh[i+1]
             uh[i+1] = uh[i] + dt*f(uh[i+1],t[i+1])
-            f1 = f(uh[i+1],t[i+1])
-            uh[i+1] = uh[i] + dt*f1
             if np.abs(tmp - uh[i+1]) < 1e-12:                                       
                 break                                                               
     return uh, t, dt
@@ -101,11 +99,11 @@ def IEuler(f, u0, T, n):
     dt = (T[1]-T[0])/n
     for i in range(n):
         uh[i+1] = uh[i] + dt*f(uh[i],t[i])
-        tmp = uh[i+1]
         j = 0 
         while j<11:
             j = j+1
             uh[i+1] = uh[i] + 0.5*dt*(f(uh[i],t[i]) + f(uh[i + 1],t[i + 1]))
+            tmp = uh[i+1]
             if np.abs(tmp - uh[i+1]) < 1e-12:
                 break
     return uh, t, dt
@@ -174,12 +172,12 @@ def YAdmas(f,u0,T,n):
     for i in range(3,n):
         uh[i+1] = uh[i] + dt*(55*f(uh[i],t[i]) -59*f(uh[i-1],t[i-1])            
         +37*f(uh[i-2],t[i-2])-9*f(uh[i-3],t[i-3]))/24 
-        tmp = uh[i+1]                                                           
         j = 0                                                                   
         while j<11:  
             j = j+1 
             uh[i+1] = uh[i] + dt/24*(9*f(t[i+1],uh[i+1])+19*f(t[i],uh[i])
             -5*f(t[i-1],uh[i-1])+f(t[i-2],uh[i-2]))                
+            tmp = uh[i+1]                                                           
             if np.abs(tmp - uh[i+1]) < 1e-12:
                 break
     return uh,t, dt
